@@ -1,0 +1,15 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: Populate service facts
+    ansible.builtin.service_facts:
+
+  - name: Assertion
+    assert:
+      that:
+        - '"filebeat" in ansible_facts.services'
